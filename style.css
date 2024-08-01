@@ -158,22 +158,23 @@ header {
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
 }
-.filter{
-    width: auto;
-    height: 30px;
-    padding: 0 5px;
-    background-color: antiquewhite;
-    border: 2px solid rgb(150, 176, 205);
-    border-radius: 3px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
+.filter {
+  width: auto;
+  height: 30px;
+  padding: 0 5px;
+  background-color: antiquewhite;
+  border: 2px solid rgb(150, 176, 205);
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
-.filterText{
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-weight: bold;
-    color: black;
+.filterText {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-weight: bold;
+  color: black;
 }
 #submitBtn-wrapper {
   flex: 0.5;
@@ -238,6 +239,15 @@ header {
   text-align: center;
   padding: 50px 0;
 }
+.recipe-display {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
 .placeholder-box {
   display: inline-block;
   width: 250px;
@@ -245,6 +255,7 @@ header {
   background-color: #86989f44;
   border: 3px solid rgba(0, 0, 0, 0.75);
   margin: 10px;
+  border-radius: 10px;
 }
 .foodName {
   font-size: 1rem;
@@ -254,10 +265,20 @@ header {
 }
 .foodImg {
   width: 80%;
+  border-radius: 8px;
   aspect-ratio: 1 / 1;
 }
 .recipe-url {
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
   color: rgb(0, 139, 220);
+}
+.ingredientsList {
+  text-align: left;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+.listIngredient {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
