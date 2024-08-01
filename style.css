@@ -1,0 +1,262 @@
+body {
+  overflow-x: hidden;
+  margin: 0;
+  display: none;
+  background-color: #e6d3b4;
+}
+header {
+  width: 100vw;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: blanchedalmond;
+  border-bottom: 4px solid #5f6c71;
+}
+.searchBar {
+  background-color: hsl(180, 100%, 98%);
+  border: none;
+  border-top-left-radius: 200px;
+  border-bottom-left-radius: 200px;
+  width: 90%;
+  height: 50px;
+  padding: 0 20px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+}
+.search-wrapper {
+  flex: 1.1;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#filterIcon {
+  height: 50px;
+  width: 3%;
+  border-top-right-radius: 200px;
+  border-bottom-right-radius: 200px;
+  background-color: azure;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 10px;
+}
+#logo-wrapper {
+  flex: 0.4;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#logoBtn {
+  width: 200px;
+  height: 60px;
+  background-image: url("/Images/logo/logo-no-background.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+#filterIcon button {
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  font-family: inherit;
+}
+.background {
+  border: none;
+  background: transparent;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.menu__icon {
+  width: 20px;
+  height: 16px;
+  padding: 2px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: end;
+  transition: transform 0.4s;
+}
+.bar {
+  width: 100%;
+  height: 0.25rem;
+  border-radius: 0.125rem;
+  background-color: rgb(83, 83, 83);
+  box-shadow: 0 0.5px 2px 0 hsla(0, 0%, 0%, 0.2);
+  transition: width 0.4s, transform 0.4s, background-color 0.4s;
+}
+.bar1 {
+  width: 90%;
+}
+.bar2 {
+  width: 65%;
+}
+.bar3 {
+  width: 40%;
+}
+.menu__icon-active {
+  transform: rotate(-90deg);
+}
+.span-active {
+  width: 0.25rem;
+  transform: translateX(-10px);
+  background-color: rgb(255, 59, 48);
+}
+.dropDownMenu {
+  display: flex;
+  width: 200px;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #86989f;
+  flex-direction: column;
+  position: absolute;
+  top: 75px;
+  right: 360px;
+  border-radius: 15px;
+  transition: height 0.5s ease, visibility 0.5s ease, padding 0.5s ease;
+  overflow: hidden;
+}
+.show-menu {
+  visibility: visible;
+  height: 80px;
+  padding: 10px 0;
+}
+.hide-menu {
+  visibility: hidden;
+  height: 0;
+  padding: 0;
+}
+.filterDisplay {
+  background-color: azure;
+  width: calc(80% + 20px);
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+#drop-menu input {
+  display: flex;
+  width: 80%;
+  height: 30px;
+  border: none;
+  border-radius: 15px;
+  padding: 0 10px;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+.filter{
+    width: auto;
+    height: 30px;
+    padding: 0 5px;
+    background-color: antiquewhite;
+    border: 2px solid rgb(150, 176, 205);
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.filterText{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+}
+#submitBtn-wrapper {
+  flex: 0.5;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+#submitBtn-wrapper button {
+  width: 100px;
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  color: #5f6c71;
+  font-weight: bolder;
+  font-size: 1rem;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  background-color: hsl(180, 100%, 98%);
+  transition: 0.15s;
+  cursor: pointer;
+  box-shadow: none;
+}
+#submitBtn-wrapper button:hover {
+  background-color: hsl(180, 8%, 93%);
+  color: #666f72;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.6);
+}
+#submitBtn-wrapper button:active {
+  background-color: hsl(180, 8%, 88%);
+  color: #3e4243;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.6);
+}
+.title-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  background-color: #e6c792;
+  padding: 30px 0;
+}
+.mainTitle {
+  font-size: 7.5rem;
+  font-weight: normal;
+  font-family: "Adamina";
+  margin: 0;
+}
+.main-title-desc {
+  font-size: 2rem;
+  font-weight: normal;
+  font-family: "Adamina";
+  margin: 0;
+  margin: 5px 0;
+}
+.main-wrapper {
+  width: 100%;
+  height: 100%;
+  background-color: #e6d3b4;
+  margin: 30px 0;
+  display: flex;
+  text-align: center;
+  padding: 50px 0;
+}
+.placeholder-box {
+  display: inline-block;
+  width: 250px;
+  aspect-ratio: 1 / 1;
+  background-color: #86989f44;
+  border: 3px solid rgba(0, 0, 0, 0.75);
+  margin: 10px;
+}
+.foodName {
+  font-size: 1rem;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  color: black;
+}
+.foodImg {
+  width: 80%;
+  aspect-ratio: 1 / 1;
+}
+.recipe-url {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  color: rgb(0, 139, 220);
+}

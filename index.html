@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>instaRecipe</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Adamina&family=Dancing+Script:wght@400..700&family=Ga+Maamli&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+        rel="stylesheet">
+    <script src="index.js"></script>
+</head>
+
+<body>
+    <header>
+        <div id="logo-wrapper">
+            <div id="logoBtn"></div>
+        </div>
+        <div class="search-wrapper"><input type="search" name="search" id="searchBar" class="searchBar"
+                placeholder="Search" value="">
+            <div id="filterIcon">
+                <div class="background">
+                    <button class="menu__icon">
+                        <span class="bar bar1"></span>
+                        <span class="bar bar2"></span>
+                        <span class="bar bar3"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="dropDownMenu hide-menu" id="drop-menu">
+            <div class="filterDisplay hideMenuElements"></div>
+            <input type="text" name="ingredients" id="ingredientInput" placeholder="Ingredients"
+                class="hideMenuElements">
+        </div>
+        <div id="submitBtn-wrapper"><button onclick="fetchData()">Enter</button></div>
+    </header>
+    <div class="title-wrapper">
+        <h1 class="mainTitle">instaRecipe</h1>
+        <p class="main-title-desc">Get the recipes you need, quickly and easily</p>
+    </div>
+    <div class="main-wrapper">
+        <div class="recipe-display" id="recipeDisplay">
+        </div>
+    </div>
+</body>
+
+</html>
