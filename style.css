@@ -115,7 +115,7 @@ header {
 }
 .dropDownMenu {
   display: flex;
-  width: 200px;
+  width: 250px;
   justify-content: space-between;
   align-items: center;
   background-color: #86989f;
@@ -173,6 +173,7 @@ header {
 .filterText{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: bold;
+    color: black;
 }
 #submitBtn-wrapper {
   flex: 0.5;

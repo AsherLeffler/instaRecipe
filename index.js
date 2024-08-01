@@ -1,3 +1,4 @@
+let filters = [];
 document.addEventListener("DOMContentLoaded", () => {
   document.body.style.display = "block";
   const logoBtn = document.getElementById("logoBtn");
@@ -27,33 +28,80 @@ document.addEventListener("DOMContentLoaded", () => {
       btnActive = true;
     }
   });
-  let filters = [];
+  const validHealthPreferences = [
+    'alcohol-free',
+    'celery-free',
+    'crustacean-free',
+    'dairy-free',
+    'egg-free',
+    'fish-free',
+    'gluten-free',
+    'keto-friendly',
+    'kidney-friendly',
+    'kosher',
+    'low-potassium',
+    'lupine-free',
+    'mustard-free',
+    'no-oil-added',
+    'low-sugar',
+    'paleo',
+    'peanut-free',
+    'pescatarian',
+    'pork-free',
+    'red-meat-free',
+    'sesame-free',
+    'shellfish-free',
+    'soy-free',
+    'sugar-conscious',
+    'tree-nut-free',
+    'vegan',
+    'vegetarian',
+    'wheat-free'
+  ];
   filterInput.addEventListener("keypress", (event) => {
     if (event.key == "Enter") {
-      const existingFilters = document.querySelectorAll(".filter");
-      for (let index = 0; index < existingFilters.length; index++) {
-        filterDisplay.removeChild(existingFilters[index]);
+        filterInput.value = filterInput.value.trim().toLowerCase(); 
+      if (filterInput.value.includes(" ")) {
+        filterInput.value = filterInput.value.replace(/ /g, "-");
       }
-      filters.push(filterInput.value);
-      filters.forEach((element) => {
-        const newFilter = document.createElement("div");
-        const newFilterText = document.createElement("p");
-        newFilterText.textContent = `${
-          element.charAt(0).toUpperCase() + element.slice(1)
-        }`;
-        newFilter.classList.add("filter");
-        newFilterText.classList.add("filterText");
-        newFilter.addEventListener("click", () => {
-          const filterIndex = filters.indexOf(element);
-          if (filterIndex > -1) {
-            filters.splice(filterIndex, 1);
-          }
-          filterDisplay.removeChild(newFilter);
+      if (validHealthPreferences.includes(filterInput.value)) {
+        filterInput.value = filterInput.value.trim().toLowerCase(); 
+        const existingFilters = document.querySelectorAll(".filter");
+        for (let index = 0; index < existingFilters.length; index++) {
+          filterDisplay.removeChild(existingFilters[index]);
+        }
+        filters.push(filterInput.value);
+        filters.forEach((element) => {
+          const newFilter = document.createElement("div");
+          const newFilterText = document.createElement("p");
+          newFilterText.textContent = `${
+            element.charAt(0).toUpperCase() + element.slice(1)
+          }`;
+          newFilter.classList.add("filter");
+          newFilterText.classList.add("filterText");
+          newFilter.addEventListener("click", () => {
+            const filterIndex = filters.indexOf(element);
+            if (filterIndex > -1) {
+              filters.splice(filterIndex, 1);
+            }
+            filterDisplay.removeChild(newFilter);
+          });
+          filterDisplay.appendChild(newFilter);
+          newFilter.appendChild(newFilterText);
         });
-        filterDisplay.appendChild(newFilter);
-        newFilter.appendChild(newFilterText);
-      });
-      document.getElementById('ingredientInput').value = '';
+        document.getElementById("ingredientInput").value = "";
+      } else{
+        document.getElementById("ingredientInput").value = "Health Preference Not Valid";
+        document.getElementById('ingredientInput').style.color = "red";
+        document.getElementById('ingredientInput').style.fontWeight = "bolder";
+        document.getElementById("ingredientInput").setAttribute("readonly", true);
+        setTimeout(()=>{
+            document.getElementById("ingredientInput").value = "";
+            document.getElementById('ingredientInput').style.color = "black";
+            document.getElementById('ingredientInput').style.fontWeight = "normal";
+            document.getElementById("ingredientInput").removeAttribute("readonly");
+        }, 1500)
+      }
     }
   });
 });
@@ -68,8 +116,11 @@ async function fetchData() {
   try {
     const food = document.getElementById("searchBar").value;
     const foodBoxs = [];
+    let healthPreference = filters[0];
     const response = await fetch(
-      `https://api.edamam.com/search?q=${food}&app_id=${appId}&app_key=${appKey}`
+      `https://api.edamam.com/search?q=${food}&app_id=${appId}&app_key=${appKey}${
+        healthPreference ? `&health=${healthPreference}` : ""
+      }`
     );
     if (!response.ok) {
       throw new Error("Could not fetch resource");
