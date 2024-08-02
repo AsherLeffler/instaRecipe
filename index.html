@@ -13,23 +13,28 @@
         href="https://fonts.googleapis.com/css2?family=Adamina&family=Dancing+Script:wght@400..700&family=Ga+Maamli&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
         rel="stylesheet">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-2BKQD8GELG"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script src="https://kit.fontawesome.com/e941d34fce.js" crossorigin="anonymous"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-  gtag('config', 'G-2BKQD8GELG');
-</script>
+        gtag('config', 'G-2BKQD8GELG');
+    </script>
     <script src="index.js"></script>
 </head>
 
 <body>
-    <header>
+    <div id="header">
         <div id="logo-wrapper">
             <div id="logoBtn"></div>
         </div>
+    </div>
+    <div class="title-wrapper">
+        <h1 class="mainTitle">instaRecipe</h1>
+        <p class="main-title-desc">Get the recipes you need, quickly and easily</p>
         <div class="search-wrapper"><input type="search" name="search" id="searchBar" class="searchBar"
-                placeholder="Search" value="">
+                placeholder="Ingredients" value="">
             <div id="filterIcon">
                 <div class="background">
                     <button class="menu__icon">
@@ -39,21 +44,45 @@
                     </button>
                 </div>
             </div>
-        </div>
-        <div class="dropDownMenu hide-menu" id="drop-menu">
-            <div class="filterDisplay hideMenuElements"></div>
-            <input type="text" name="ingredients" id="ingredientInput" placeholder="Health Preferences"
-                class="hideMenuElements">
+            <div class="dropDownMenu" id="drop-menu">
+                <div class="filterDisplay hideMenuElements"></div>
+                <input type="text" name="ingredients" id="ingredientInput" placeholder="Health Preferences"
+                    class="hideMenuElements">
+            </div>
         </div>
         <div id="submitBtn-wrapper"><button onclick="fetchData()">Search</button></div>
-    </header>
-    <div class="title-wrapper">
-        <h1 class="mainTitle">instaRecipe</h1>
-        <p class="main-title-desc">Get the recipes you need, quickly and easily</p>
     </div>
     <div class="main-wrapper">
         <div class="recipe-display" id="recipeDisplay">
         </div>
+    </div>
+    <button class="supportBtn"><i class="fa-solid fa-comment-medical" style="color: #f5faff;"></i></button>
+    <div class="supportDisplay-hide" id="supportDisplay">
+        <div class="supportHeader">
+            <h2>Support</h2>
+            <button id="exitBtn"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="formWrapper" id="formCont">
+            <form action="https://formspree.io/f/mdknglzj" id="msgForm" onsubmit="formSubmit(event)" method="POST">
+                <div class="formContent">
+                    <label for="msg-type" style="margin-top: 8px;">Type of Inquiry</label>
+                    <select id="msg-type" name="inquiryType" onchange="updateMsg()">
+                        <option value="help">Help</option>
+                        <option value="suggest">Suggest</option>
+                    </select>
+                </div>
+                <div class="formContent">
+                    <label for="email">Email</label>
+                    <input type="email" placeholder="example@gmail.com" id="email" name="email" required>
+                </div>
+                <div class="formContent">
+                    <label for="issueInput" id="msgType" required>Please describe your issue</label>
+                    <textarea name="issueDescription" id="issueInput" required></textarea>
+                </div>
+                <button type="submit" id="submitBtn">Submit</button>
+            </form>
+        </div>
+        <div class="supportFooter"></div>
     </div>
 </body>
 

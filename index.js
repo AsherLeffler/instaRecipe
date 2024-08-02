@@ -19,14 +19,14 @@ document.addEventListener("DOMContentLoaded", () => {
       for (let index = 0; index < menuBars.length; index++) {
         menuBars[index].classList.remove("span-active");
       }
-      dropDownMenu.classList.replace("show-menu", "hide-menu");
+      dropDownMenu.classList.remove("show-menu");
       btnActive = false;
     } else {
       menuIcon.classList.add("menu__icon-active");
       for (let index = 0; index < menuBars.length; index++) {
         menuBars[index].classList.add("span-active");
       }
-      dropDownMenu.classList.replace("hide-menu", "show-menu");
+      dropDownMenu.classList.add("show-menu");
       btnActive = true;
     }
   });
@@ -87,9 +87,11 @@ document.addEventListener("DOMContentLoaded", () => {
               filters.splice(filterIndex, 1);
             }
             filterDisplay.removeChild(newFilter);
+            adjustFilterDisplayHeight();
           });
           filterDisplay.appendChild(newFilter);
           newFilter.appendChild(newFilterText);
+          adjustFilterDisplayHeight();
         });
         document.getElementById("ingredientInput").value = "";
       } else {
@@ -112,12 +114,32 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
   });
+  function adjustFilterDisplayHeight() {
+    filterDisplay.style.height =
+      filterDisplay.children.length > 0 ? "auto" : "20px";
+  }
   searchBar.addEventListener("keypress", (event) => {
     if (event.key == "Enter") {
       ingredientList.push(searchBar.value);
       searchBar.value = "";
       console.log(ingredientList);
+      fetchData();
     }
+  });
+  const supportBtn = document.querySelector(".supportBtn");
+  const supportDisplay = document.getElementById("supportDisplay");
+  supportBtn.addEventListener("click", () => {
+    supportBtn.classList.add("supportBtn-hide");
+    setTimeout(() => {
+      supportDisplay.classList.add("supportDisplay-show");
+    }, 300);
+  });
+  const exitBtn = document.getElementById("exitBtn");
+  exitBtn.addEventListener("click", () => {
+    supportDisplay.classList.remove("supportDisplay-show");
+    setTimeout(() => {
+      supportBtn.classList.remove("supportBtn-hide");
+    }, 600);
   });
 });
 async function fetchData() {
@@ -125,7 +147,7 @@ async function fetchData() {
   const appId = "cd6a87b1";
   const appKey = "63d58ed004536094bcb086991363deb1";
   const from = 0;
-  const to = 48;
+  const to = 60;
   const foodItems = document.querySelectorAll(".placeholder-box");
   for (let index = 0; index < foodItems.length; index++) {
     foodDisplay.removeChild(foodItems[index]);
@@ -134,7 +156,11 @@ async function fetchData() {
     const foodBoxs = [];
     const query = ingredientList.join(",");
     let healthPreference = filters[0];
-    const response = await fetch(`https://api.edamam.com/search?q=${encodeURIComponent(query)}&app_id=${appId}&app_key=${appKey}${healthPreference ? `&health=${healthPreference}` : ""}&from=${from}&to=${to}`);
+    const response = await fetch(
+      `https://api.edamam.com/search?q=${query}&app_id=${appId}&app_key=${appKey}${
+        healthPreference ? `&health=${healthPreference}` : ""
+      }&from=${from}&to=${to}`
+    );
     if (!response.ok) {
       throw new Error("Could not fetch resource");
     }
@@ -163,8 +189,9 @@ async function fetchData() {
       foodItem.appendChild(recipeIngredientsList);
       for (let i = 0; i < data.hits[index].recipe.ingredients.length; i++) {
         const recipeIngredients = document.createElement("li");
-        recipeIngredients.textContent = data.hits[index].recipe.ingredients[i].food;
-        recipeIngredients.classList.add('listIngredient');
+        recipeIngredients.textContent =
+          data.hits[index].recipe.ingredients[i].food;
+        recipeIngredients.classList.add("listIngredient");
         recipeIngredientsList.appendChild(recipeIngredients);
       }
       foodItem.appendChild(br);
@@ -176,4 +203,50 @@ async function fetchData() {
   } catch (error) {
     console.error(error);
   }
+}
+function formSubmit(event) {
+  event.preventDefault();
+  const form = document.getElementById("msgForm");
+  const formCont = document.getElementById("formCont");
+  const formData = new FormData(form);
+  fetch("https://formspree.io/f/mdknglzj", {
+    method: "POST",
+    body: formData,
+    headers: {
+      Accept: "application/json",
+    },
+  })
+    .then((response) => {
+      if (response.ok) {
+        formCont.removeChild(form);
+        const formSubmitTitle = document.createElement("h2");
+        const formSubmitDiv = document.createElement("div");
+        const formSubmitImg = document.createElement("img");
+        formSubmitTitle.textContent = "Thank You! We will reply shortly.";
+        formSubmitImg.setAttribute("src", "/images/formSubmit.png");
+        formSubmitTitle.classList.add("formSubmitTitle");
+        formSubmitImg.classList.add("formSubmitImg");
+        formSubmitDiv.classList.add("formSubmitDiv");
+        formCont.appendChild(formSubmitDiv);
+        formSubmitDiv.appendChild(formSubmitTitle);
+        formSubmitDiv.appendChild(formSubmitImg);
+      } else {
+        alert("There was a problem with the form submission.");
+      }
+    })
+    .catch((error) => {
+      console.error("Form submission error:", error);
+      alert("There was a problem with the form submission.");
+    });
+}
+
+function updateMsg() {
+  const msgType = document.getElementById("msg-type");
+  const selectedValue = msgType.options[msgType.selectedIndex].text;
+  const response =
+    selectedValue == "Help"
+      ? "Please describe your issue"
+      : "Please enter your suggestion";
+  const labelElement = document.getElementById("msgType");
+  labelElement.textContent = response + ":";
 }
