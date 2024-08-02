@@ -4,14 +4,15 @@ body {
   display: none;
   background-color: hsl(195, 8%, 91%);
 }
-#header {
+header {
   width: 100vw;
   height: 80px;
   display: flex;
   justify-content: left;
   background-color: rgb(137, 176, 255);
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.4);
   z-index: 100;
+  position: relative;
 }
 .searchBar {
   background-color: hsl(200, 100%, 99%);
@@ -21,20 +22,20 @@ body {
   width: 90%;
   height: 50px;
   padding: 0 20px;
-  font-family: "Adamina", "Adamina", "Trebuchet MS", "Lucida Sans Unicode",
-    "Lucida Grande", "Lucida Sans", Arial, sans-serif;
-  font-size: 1rem;
-  font-weight: bold;
+  font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-weight: light;
+  font-size: 1.2rem;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 .search-wrapper {
-  width: 50%;
+  width: 80%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   margin: 20px 0;
+  margin-right: 300px;
 }
 #filterIcon {
   height: 50px;
@@ -162,15 +163,14 @@ body {
   border-radius: 15px;
   padding: 0 10px;
   transition: opacity 0.5s ease, visibility 0.5s ease;
-  font-family: "Adamina", "Adamina", "Trebuchet MS", "Lucida Sans Unicode",
-    "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 .filter {
   width: auto;
   height: auto;
-  padding: 0 5px;
-  background-color: antiquewhite;
-  border: 2px solid rgb(150, 176, 205);
+  padding: 5px;
+  background-color: rgb(243, 243, 243);
+  border: 1px solid rgba(66, 66, 66, 0.2);
   border-radius: 3px;
   display: flex;
   justify-content: center;
@@ -178,43 +178,42 @@ body {
   cursor: pointer;
 }
 .filterText {
-  font-family: "Adamina", "Adamina", "Trebuchet MS", "Lucida Sans Unicode",
-    "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-weight: bold;
   color: black;
   font-size: 0.9rem;
   margin: 0;
+  margin-right: 5px;
 }
 #submitBtn-wrapper {
   flex: 0.5;
   display: flex;
   justify-content: start;
   align-items: center;
+  margin-left: 30%;
 }
 #submitBtn-wrapper button {
   width: 200px;
   height: 50px;
   border: none;
   border-radius: 10px;
-  color: #5f6c71;
-  font-weight: bolder;
-  font-size: 1rem;
-  font-family: "Adamina", "Adamina", "Trebuchet MS", "Lucida Sans Unicode",
-    "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  color: #2c2c2c;
+  font-weight: bold;
+  font-size: 1.4rem;
+  font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   background-color: hsl(200, 100%, 99%);
   transition: 0.15s;
   cursor: pointer;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 #submitBtn-wrapper button:hover {
-  background-color: hsl(180, 8%, 93%);
-  color: #666f72;
-  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.6);
+  color: #282828;
+  box-shadow: 2px 2px 3px 3px rgba(0, 0, 0, 0.2);
 }
 #submitBtn-wrapper button:active {
-  background-color: hsl(180, 8%, 88%);
+  background-color: hsl(210, 8%, 91%);
   color: #3e4243;
-  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.6);
+  box-shadow: 2px 2px 3px 3px rgba(0, 0, 0, 0.2);
 }
 .title-wrapper {
   display: flex;
@@ -225,13 +224,15 @@ body {
   height: auto;
   background-color: hsl(195, 8%, 91%);
   padding: 30px 0;
+  z-index: 10;
+  position: relative;
 }
 .mainTitle {
   font-size: 7.5rem;
   font-weight: normal;
   font-family: "Adamina";
   margin: 0;
-  color: rgb(0, 20, 0);
+  color: rgb(24, 24, 24);
 }
 .main-title-desc {
   font-size: 2rem;
@@ -269,11 +270,11 @@ body {
   margin: 10px;
   border-radius: 10px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+  padding-bottom: 10px;
 }
 .foodName {
   font-size: 1rem;
-  font-family: "Adamina", "Adamina", "Trebuchet MS", "Lucida Sans Unicode",
-    "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   color: black;
 }
 .foodImg {
@@ -282,19 +283,15 @@ body {
   aspect-ratio: 1 / 1;
 }
 .recipe-url {
-  font-family: "Adamina", "Adamina", "Trebuchet MS", "Lucida Sans Unicode",
-    "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   color: rgb(0, 139, 220);
-  margin-bottom: 10px;
 }
 .ingredientsList {
   text-align: left;
-  font-family: "Adamina", "Adamina", "Trebuchet MS", "Lucida Sans Unicode",
-    "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 .listIngredient {
-  font-family: "Adamina", "Adamina", "Trebuchet MS", "Lucida Sans Unicode",
-    "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 .supportBtn {
   width: 60px;
@@ -313,6 +310,7 @@ body {
   opacity: 1;
   visibility: visible;
   transition: background-color 0.3s ease, opacity 0.2s, visibility 0.2s;
+  z-index: 120;
 }
 .supportBtn:hover {
   background-color: rgb(29, 94, 225);
@@ -334,6 +332,7 @@ body {
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  z-index: 120;
 }
 .supportDisplay-show {
   visibility: visible;
@@ -479,4 +478,67 @@ body {
   width: 60%;
   aspect-ratio: 1 / 1;
   margin-bottom: 40px;
+}
+.ingredient_search{
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 40px 0;
+}
+#ingredientWrapper{
+  width: 15%;
+  height: 400px;
+  box-shadow: 0 0 4px 3px rgba(0, 0, 0, 0.2);
+  background-color: rgb(237, 237, 237);
+  border-radius: 8px;
+  margin-left: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  flex-direction: row;
+  align-content: flex-start;
+  overflow: hidden;
+}
+.ingredientDiv{
+  width: fit-content;
+  height: 20px;
+  background-color: white;
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.ingredient-showcase-text{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 1rem;
+  margin-right: 5px;
+}
+#showcaseTitle{
+  width: 100%;
+  height: 3%;
+  background-color: rgb(220, 220, 220);
+  box-shadow: 0 2px 3px 2px rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  font-size: 1.5rem;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: light;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#ingredientShowcase{
+  width: 100%;
+  height: 97%;
+  padding: 15px;
+  padding-top: 0;
+  flex-wrap: wrap;
+  display: flex;
+  gap: 10px;
+  flex-direction: row;
+  align-content: flex-start;
 }

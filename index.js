@@ -76,11 +76,13 @@ document.addEventListener("DOMContentLoaded", () => {
         filters.forEach((element) => {
           const newFilter = document.createElement("div");
           const newFilterText = document.createElement("p");
+          const xIcon = document.createElement("i");
           newFilterText.textContent = `${
             element.charAt(0).toUpperCase() + element.slice(1)
           }`;
           newFilter.classList.add("filter");
           newFilterText.classList.add("filterText");
+          xIcon.classList.add("fa-solid", "fa-xmark");
           newFilter.addEventListener("click", () => {
             const filterIndex = filters.indexOf(element);
             if (filterIndex > -1) {
@@ -91,6 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
           });
           filterDisplay.appendChild(newFilter);
           newFilter.appendChild(newFilterText);
+          newFilter.appendChild(xIcon);
           adjustFilterDisplayHeight();
         });
         document.getElementById("ingredientInput").value = "";
@@ -121,9 +124,33 @@ document.addEventListener("DOMContentLoaded", () => {
   searchBar.addEventListener("keypress", (event) => {
     if (event.key == "Enter") {
       ingredientList.push(searchBar.value);
-      searchBar.value = "";
+      const ingredientShowcase = document.getElementById("ingredientShowcase");
       console.log(ingredientList);
-      fetchData();
+      const existingIngredients = document.querySelectorAll(".ingredientDiv");
+      for (let index = 0; index < existingIngredients.length; index++) {
+        ingredientShowcase.removeChild(existingIngredients[index]);
+      }
+      ingredientList.forEach((element) => {
+        const newIngredient = document.createElement("div");
+        const newIngredientText = document.createElement("p");
+        const xIcon = document.createElement("i");
+        newIngredientText.classList.add("ingredient-showcase-text");
+        xIcon.classList.add("fa-solid", "fa-xmark");
+        newIngredient.classList.add("ingredientDiv");
+        newIngredientText.textContent = `${
+          element.charAt(0).toUpperCase() + element.slice(1)
+        }`;
+        newIngredient.addEventListener("click", () => {
+          ingredientShowcase.removeChild(newIngredient);
+          const ingredientIndex = ingredientList.indexOf(element);
+          ingredientList.splice(ingredientIndex, 1);
+          console.log(ingredientList);
+        });
+        ingredientShowcase.appendChild(newIngredient);
+        newIngredient.appendChild(newIngredientText);
+        newIngredient.appendChild(xIcon);
+      });
+      searchBar.value = "";
     }
   });
   const supportBtn = document.querySelector(".supportBtn");
@@ -143,65 +170,81 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 async function fetchData() {
-  const foodDisplay = document.getElementById("recipeDisplay");
-  const appId = "cd6a87b1";
-  const appKey = "63d58ed004536094bcb086991363deb1";
-  const from = 0;
-  const to = 60;
-  const foodItems = document.querySelectorAll(".placeholder-box");
-  for (let index = 0; index < foodItems.length; index++) {
-    foodDisplay.removeChild(foodItems[index]);
-  }
-  try {
-    const foodBoxs = [];
-    const query = ingredientList.join(",");
-    let healthPreference = filters[0];
-    const response = await fetch(
-      `https://api.edamam.com/search?q=${query}&app_id=${appId}&app_key=${appKey}${
-        healthPreference ? `&health=${healthPreference}` : ""
-      }&from=${from}&to=${to}`
-    );
-    if (!response.ok) {
-      throw new Error("Could not fetch resource");
+  if (ingredientList.length < 1) {
+    document.getElementById("searchBar").value =
+      "Please enter ingredient(s)";
+    document.getElementById("searchBar").setAttribute("readonly", true);
+    document.getElementById("searchBar").style.color = "red";
+    document.getElementById("searchBar").style.fontWeight = "bolder";
+    setTimeout(() => {
+      document.getElementById("searchBar").removeAttribute("readonly");
+      document.getElementById("searchBar").value = "";
+      document.getElementById("searchBar").style.color = "black";
+      document.getElementById("searchBar").style.fontWeight = "normal";
+    }, 1500);
+  } else {
+    const foodDisplay = document.getElementById("recipeDisplay");
+    const appId = "cd6a87b1";
+    const appKey = "63d58ed004536094bcb086991363deb1";
+    const from = 0;
+    const to = 60;
+    const foodItems = document.querySelectorAll(".placeholder-box");
+    for (let index = 0; index < foodItems.length; index++) {
+      foodDisplay.removeChild(foodItems[index]);
     }
-    const data = await response.json();
-    for (let index = 0; index < data.hits.length; index++) {
-      foodBoxs.push(data.hits[index].recipe);
-      const foodItem = document.createElement("div");
-      const foodName = document.createElement("h1");
-      const foodImg = document.createElement("img");
-      const recipeIngredientsList = document.createElement("ul");
-      const foodRecipeUrl = document.createElement("a");
-      const br = document.createElement("br");
-      foodName.textContent = `${data.hits[index].recipe.label}`;
-      foodImg.setAttribute("src", data.hits[index].recipe.image);
-      foodImg.setAttribute("alt", `Image of ${data.hits[index].recipe.label}`);
-      foodRecipeUrl.setAttribute("href", data.hits[index].recipe.url);
-      foodRecipeUrl.textContent = "Recipe";
-      foodRecipeUrl.classList.add("recipe-url");
-      foodImg.classList.add("foodImg");
-      foodItem.classList.add("placeholder-box");
-      foodName.classList.add("foodName");
-      recipeIngredientsList.classList.add("ingredientsList");
-      foodDisplay.appendChild(foodItem);
-      foodItem.appendChild(foodName);
-      foodItem.appendChild(foodImg);
-      foodItem.appendChild(recipeIngredientsList);
-      for (let i = 0; i < data.hits[index].recipe.ingredients.length; i++) {
-        const recipeIngredients = document.createElement("li");
-        recipeIngredients.textContent =
-          data.hits[index].recipe.ingredients[i].food;
-        recipeIngredients.classList.add("listIngredient");
-        recipeIngredientsList.appendChild(recipeIngredients);
+    try {
+      const foodBoxs = [];
+      const query = ingredientList.join(",");
+      let healthPreference = filters[0];
+      const response = await fetch(
+        `https://api.edamam.com/search?q=${query}&app_id=${appId}&app_key=${appKey}${
+          healthPreference ? `&health=${healthPreference}` : ""
+        }&from=${from}&to=${to}`
+      );
+      if (!response.ok) {
+        throw new Error("Could not fetch resource");
       }
-      foodItem.appendChild(br);
-      foodItem.appendChild(foodRecipeUrl);
+      const data = await response.json();
+      for (let index = 0; index < data.hits.length; index++) {
+        foodBoxs.push(data.hits[index].recipe);
+        const foodItem = document.createElement("div");
+        const foodName = document.createElement("h1");
+        const foodImg = document.createElement("img");
+        const recipeIngredientsList = document.createElement("ul");
+        const foodRecipeUrl = document.createElement("a");
+        const br = document.createElement("br");
+        foodName.textContent = `${data.hits[index].recipe.label}`;
+        foodImg.setAttribute("src", data.hits[index].recipe.image);
+        foodImg.setAttribute(
+          "alt",
+          `Image of ${data.hits[index].recipe.label}`
+        );
+        foodRecipeUrl.setAttribute("href", data.hits[index].recipe.url);
+        foodRecipeUrl.textContent = "Recipe";
+        foodRecipeUrl.classList.add("recipe-url");
+        foodImg.classList.add("foodImg");
+        foodItem.classList.add("placeholder-box");
+        foodName.classList.add("foodName");
+        recipeIngredientsList.classList.add("ingredientsList");
+        foodDisplay.appendChild(foodItem);
+        foodItem.appendChild(foodName);
+        foodItem.appendChild(foodImg);
+        foodItem.appendChild(recipeIngredientsList);
+        for (let i = 0; i < data.hits[index].recipe.ingredients.length; i++) {
+          const recipeIngredients = document.createElement("li");
+          recipeIngredients.textContent =
+            data.hits[index].recipe.ingredients[i].food;
+          recipeIngredients.classList.add("listIngredient");
+          recipeIngredientsList.appendChild(recipeIngredients);
+        }
+        foodItem.appendChild(br);
+        foodItem.appendChild(foodRecipeUrl);
+      }
+      console.log(foodBoxs);
+      document.getElementById("searchBar").value = "";
+    } catch (error) {
+      console.error(error);
     }
-    console.log(foodBoxs);
-    document.getElementById("searchBar").value = "";
-    ingredientList = [];
-  } catch (error) {
-    console.error(error);
   }
 }
 function formSubmit(event) {

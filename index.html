@@ -25,32 +25,40 @@
 </head>
 
 <body>
-    <div id="header">
+    <header>
         <div id="logo-wrapper">
             <div id="logoBtn"></div>
         </div>
-    </div>
+    </header>
     <div class="title-wrapper">
         <h1 class="mainTitle">instaRecipe</h1>
         <p class="main-title-desc">Get the recipes you need, quickly and easily</p>
-        <div class="search-wrapper"><input type="search" name="search" id="searchBar" class="searchBar"
-                placeholder="Ingredients" value="">
-            <div id="filterIcon">
-                <div class="background">
-                    <button class="menu__icon">
-                        <span class="bar bar1"></span>
-                        <span class="bar bar2"></span>
-                        <span class="bar bar3"></span>
-                    </button>
-                </div>
+        <div class="ingredient_search">
+            <div id="ingredientWrapper"> <!-- Change to ingredientWrapper -->
+                <div id="showcaseTitle">Ingredients</div>
+                <div id="ingredientShowcase"></div>
             </div>
-            <div class="dropDownMenu" id="drop-menu">
-                <div class="filterDisplay hideMenuElements"></div>
-                <input type="text" name="ingredients" id="ingredientInput" placeholder="Health Preferences"
-                    class="hideMenuElements">
+            <div style="display: flex; flex-direction: column; justify-content: space-evenly; text-align: left; width: 83%;">
+                <div class="search-wrapper"><input type="search" name="search" id="searchBar" class="searchBar"
+                        placeholder="Ingredients" value="">
+                    <div id="filterIcon">
+                        <div class="background">
+                            <button class="menu__icon">
+                                <span class="bar bar1"></span>
+                                <span class="bar bar2"></span>
+                                <span class="bar bar3"></span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="dropDownMenu" id="drop-menu">
+                        <div class="filterDisplay hideMenuElements"></div>
+                        <input type="text" name="ingredients" id="ingredientInput" placeholder="Health Preferences"
+                            class="hideMenuElements">
+                    </div>
+                </div>
+                <div id="submitBtn-wrapper"><button onclick="fetchData()">Search</button></div>
             </div>
         </div>
-        <div id="submitBtn-wrapper"><button onclick="fetchData()">Search</button></div>
     </div>
     <div class="main-wrapper">
         <div class="recipe-display" id="recipeDisplay">
