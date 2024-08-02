@@ -22,7 +22,7 @@ header {
   width: 90%;
   height: 50px;
   padding: 0 20px;
-  font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: Haettenschweiler, "Arial Narrow Bold", sans-serif;
   font-weight: light;
   font-size: 1.2rem;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
@@ -163,7 +163,7 @@ header {
   border-radius: 15px;
   padding: 0 10px;
   transition: opacity 0.5s ease, visibility 0.5s ease;
-  font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
 .filter {
   width: auto;
@@ -178,7 +178,7 @@ header {
   cursor: pointer;
 }
 .filterText {
-  font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: Haettenschweiler, "Arial Narrow Bold", sans-serif;
   font-weight: bold;
   color: black;
   font-size: 0.9rem;
@@ -200,7 +200,7 @@ header {
   color: #2c2c2c;
   font-weight: bold;
   font-size: 1.4rem;
-  font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: Haettenschweiler, "Arial Narrow Bold", sans-serif;
   background-color: hsl(200, 100%, 99%);
   transition: 0.15s;
   cursor: pointer;
@@ -226,6 +226,7 @@ header {
   padding: 30px 0;
   z-index: 10;
   position: relative;
+  text-align: center;
 }
 .mainTitle {
   font-size: 7.5rem;
@@ -274,7 +275,7 @@ header {
 }
 .foodName {
   font-size: 1rem;
-  font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: Haettenschweiler, "Arial Narrow Bold", sans-serif;
   color: black;
 }
 .foodImg {
@@ -283,15 +284,15 @@ header {
   aspect-ratio: 1 / 1;
 }
 .recipe-url {
-  font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: Haettenschweiler, "Arial Narrow Bold", sans-serif;
   color: rgb(0, 139, 220);
 }
 .ingredientsList {
   text-align: left;
-  font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
 .listIngredient {
-  font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
 .supportBtn {
   width: 60px;
@@ -338,8 +339,8 @@ header {
   visibility: visible;
   height: 400px;
 }
-.supportDisplay-hide *{
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+.supportDisplay-hide * {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 .supportHeader {
   width: 100%;
@@ -403,12 +404,12 @@ header {
   text-align: left;
   padding: 0 15px;
 }
-.formContent *{
+.formContent * {
   display: flex;
   flex-direction: column;
   margin: 5px 0;
 }
-.formContent{
+.formContent {
   width: 100%;
 }
 #msg-type {
@@ -465,13 +466,13 @@ header {
   height: 100%;
   width: 100%;
   justify-content: space-between;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   align-items: center;
   text-align: center;
 }
 .formSubmitTitle {
   color: #3e4243;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   margin-top: 40px;
 }
 .formSubmitImg {
@@ -479,7 +480,7 @@ header {
   aspect-ratio: 1 / 1;
   margin-bottom: 40px;
 }
-.ingredient_search{
+.ingredient_search {
   width: 100%;
   height: auto;
   display: flex;
@@ -487,7 +488,7 @@ header {
   justify-content: space-between;
   margin: 40px 0;
 }
-#ingredientWrapper{
+#ingredientWrapper {
   width: 15%;
   height: 400px;
   box-shadow: 0 0 4px 3px rgba(0, 0, 0, 0.2);
@@ -501,7 +502,7 @@ header {
   align-content: flex-start;
   overflow: hidden;
 }
-.ingredientDiv{
+.ingredientDiv {
   width: fit-content;
   height: 20px;
   background-color: white;
@@ -513,25 +514,25 @@ header {
   justify-content: center;
   cursor: pointer;
 }
-.ingredient-showcase-text{
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+.ingredient-showcase-text {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-size: 1rem;
   margin-right: 5px;
 }
-#showcaseTitle{
+#showcaseTitle {
   width: 100%;
   height: 3%;
   background-color: rgb(220, 220, 220);
   box-shadow: 0 2px 3px 2px rgba(0, 0, 0, 0.2);
   padding: 15px;
   font-size: 1.5rem;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-weight: light;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-#ingredientShowcase{
+#ingredientShowcase {
   width: 100%;
   height: 97%;
   padding: 15px;
@@ -542,9 +543,85 @@ header {
   flex-direction: row;
   align-content: flex-start;
 }
+.searchContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  width: 83%;
+}
 @media (width <= 500px) {
-  
+  .mainTitle {
+    font-size: 3.5rem;
+  }
+  .main-title-desc {
+    font-size: 1.5rem;
+  }
+  .ingredient_search {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column-reverse;
+    margin: 40px 0;
+  }
+  #ingredientWrapper {
+    width: 80%;
+    margin: 0;
+  }
+  .search-wrapper {
+    width: 90%;
+  }
+  #submitBtn-wrapper {
+    margin-left: 10%;
+    margin: 30px 0;
+  }
+  #filterIcon {
+    width: 10%;
+  }
 }
 @media (500px <= width <=1050px) {
-  
+  .mainTitle {
+    font-size: 5.5rem;
+  }
+  .main-title-desc {
+    font-size: 2rem;
+  }
+  .ingredient_search {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column-reverse;
+    margin: 40px 0;
+  }
+  #ingredientWrapper {
+    width: 80%;
+    margin: 0;
+  }
+  .search-wrapper {
+    width: 90%;
+    margin: 0;
+  }
+  #submitBtn-wrapper {
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+    margin-top: 20px;
+    width: 100%;
+    margin-left: 0;
+  }
+  #filterIcon {
+    width: 10%;
+  }
+  .searchContainer {
+    width: 90%;
+    align-items: flex-start;
+  }
+  .searchCenter{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
 }
