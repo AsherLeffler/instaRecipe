@@ -10,6 +10,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const filterInput = document.getElementById("ingredientInput");
   const searchBar = document.getElementById("searchBar");
   let btnActive;
+  let searchBarWords;
+  let userIngredients = [];
+  searchBar.addEventListener('input',()=>{
+    searchBarWords = searchBar.value.trim().split(/\s+/);
+    userIngredients = searchBarWords.filter(searchBarWords => searchBarWords.length > 0);
+  })
   logoBtn.addEventListener("click", () => {
     window.location.href = "index.html";
   });
@@ -123,7 +129,13 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   searchBar.addEventListener("keypress", (event) => {
     if (event.key == "Enter") {
-      ingredientList.push(searchBar.value);
+      if (searchBarWords.length > 1) {
+        userIngredients.forEach((element) => {
+          ingredientList.push(element);
+        });
+      } else if(searchBarWords.length == 1){
+        ingredientList.push(searchBar.value);
+      }
       const ingredientShowcase = document.getElementById("ingredientShowcase");
       console.log(ingredientList);
       const existingIngredients = document.querySelectorAll(".ingredientDiv");
@@ -171,8 +183,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 async function fetchData() {
   if (ingredientList.length < 1) {
-    document.getElementById("searchBar").value =
-      "Please enter ingredient(s)";
+    document.getElementById("searchBar").value = "Please enter ingredient(s)";
     document.getElementById("searchBar").setAttribute("readonly", true);
     document.getElementById("searchBar").style.color = "red";
     document.getElementById("searchBar").style.fontWeight = "bolder";

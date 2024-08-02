@@ -542,3 +542,9 @@ header {
   flex-direction: row;
   align-content: flex-start;
 }
+@media (width <= 500px) {
+  
+}
+@media (500px <= width <=1050px) {
+  
+}
