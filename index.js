@@ -253,7 +253,7 @@ async function fetchData() {
       }
       console.log(foodBoxs);
       if(foodBoxs.length == 60){
-        document.getElementById('resultsDisplay').textContent = `Results: ${foodBoxs.length}(MAX)`;
+        document.getElementById('resultsDisplay').textContent = `Results: ${foodBoxs.length} (MAX)`;
       } else{
         document.getElementById('resultsDisplay').textContent = `Results: ${foodBoxs.length}`;
       }
