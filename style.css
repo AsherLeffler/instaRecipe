@@ -34,12 +34,11 @@ header {
   align-items: center;
   justify-content: center;
   position: relative;
-  margin-top: 20px;
-  margin-right: 300px;
 }
 #filterIcon {
   height: 50px;
   width: 10%;
+  min-width: fit-content;
   border-top-right-radius: 200px;
   border-bottom-right-radius: 200px;
   background-color: hsl(200, 100%, 99%);
@@ -584,6 +583,7 @@ header {
   #ingredientWrapper {
     width: 80%;
     margin: 0;
+    max-width: 300px;
   }
   .search-wrapper {
     width: 90%;
@@ -591,9 +591,16 @@ header {
   #submitBtn-wrapper {
     margin-left: 10%;
     margin: 30px 0;
+    justify-content: center;
   }
   #filterIcon {
     width: 10%;
+  }
+  .searchCenter{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
   }
 }
 @media (500px <= width <=1050px) {
@@ -614,6 +621,7 @@ header {
   #ingredientWrapper {
     width: 80%;
     margin: 0;
+    max-width: 400px;
   }
   .search-wrapper {
     width: 90%;
