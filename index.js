@@ -252,7 +252,11 @@ async function fetchData() {
         foodItem.appendChild(foodRecipeUrl);
       }
       console.log(foodBoxs);
-      document.getElementById('resultsDisplay').textContent = `Results: ${foodBoxs.length}`;
+      if(foodBoxs.length == 60){
+        document.getElementById('resultsDisplay').textContent = `Results: ${foodBoxs.length}(MAX)`;
+      } else{
+        document.getElementById('resultsDisplay').textContent = `Results: ${foodBoxs.length}`;
+      }
       document.getElementById("searchBar").value = "";
     } catch (error) {
       console.error(error);
