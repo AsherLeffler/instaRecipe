@@ -43,6 +43,7 @@
                     <div class="search-wrapper"><input type="search" name="search" id="searchBar" class="searchBar"
                             placeholder="Ingredients" value="">
                         <div id="filterIcon">
+                            <p style="margin-left: 10px; font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-weight: bolder; color: rgb(83, 83, 83);">Filters</p>
                             <div class="background">
                                 <button class="menu__icon">
                                     <span class="bar bar1"></span>
@@ -58,9 +59,11 @@
                         </div>
                     </div>
                 </div>
+                <div class="explanationWrapper"><p>When including ingredients with a space in between, connect with a hyphon(-) (Ex: "olive-oil"). Press enter to add the ingredient.</p></div>
                 <div id="submitBtn-wrapper"><button onclick="fetchData()">Search</button></div>
             </div>
         </div>
+        <h2 id="resultsDisplay"></h2>
     </div>
     <div class="main-wrapper">
         <div class="recipe-display" id="recipeDisplay">

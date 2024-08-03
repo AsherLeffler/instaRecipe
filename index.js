@@ -125,7 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   function adjustFilterDisplayHeight() {
     filterDisplay.style.height =
-      filterDisplay.children.length > 0 ? "auto" : "20px";
+      filterDisplay.children.length > 0 ? "auto" : "0px";
   }
   searchBar.addEventListener("keypress", (event) => {
     if (event.key == "Enter") {
@@ -252,6 +252,7 @@ async function fetchData() {
         foodItem.appendChild(foodRecipeUrl);
       }
       console.log(foodBoxs);
+      document.getElementById('resultsDisplay').textContent = `Results: ${foodBoxs.length}`;
       document.getElementById("searchBar").value = "";
     } catch (error) {
       console.error(error);
