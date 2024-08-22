@@ -22,7 +22,7 @@ header {
   width: 80%;
   height: 50px;
   padding: 0 20px;
-  font-family: Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-family: "Antic", sans-serif;
   font-weight: light;
   font-size: 1.2rem;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
@@ -163,7 +163,7 @@ header {
   border-radius: 8px;
   padding: 0 10px;
   transition: opacity 0.5s ease, visibility 0.5s ease;
-  font-family: Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-family: "Antic", sans-serif;
 }
 .filter {
   width: auto;
@@ -178,7 +178,7 @@ header {
   cursor: pointer;
 }
 .filterText {
-  font-family: Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-family: "Antic", sans-serif;
   font-weight: bold;
   color: black;
   font-size: 0.9rem;
@@ -200,7 +200,7 @@ header {
   color: #2c2c2c;
   font-weight: bold;
   font-size: 1.4rem;
-  font-family: Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-family: "Antic", sans-serif;
   background-color: hsl(200, 100%, 99%);
   transition: 0.15s;
   cursor: pointer;
@@ -275,7 +275,7 @@ header {
 }
 .foodName {
   font-size: 1rem;
-  font-family: Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-family: "Antic", sans-serif;
   color: black;
 }
 .foodImg {
@@ -284,15 +284,15 @@ header {
   aspect-ratio: 1 / 1;
 }
 .recipe-url {
-  font-family: Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-family: "Antic", sans-serif;
   color: rgb(0, 139, 220);
 }
 .ingredientsList {
   text-align: left;
-  font-family: Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-family: "Antic", sans-serif;
 }
 .listIngredient {
-  font-family: Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-family: "Antic", sans-serif;
 }
 .supportBtn {
   width: 60px;
@@ -557,12 +557,12 @@ header {
   margin-left: 7%;
 }
 .explanationWrapper p{
-  font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: "Antic", sans-serif;
   font-size: 0.8rem;
   color: #848484;
 }
 #resultsDisplay{
-  font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: "Antic", sans-serif;
   color: #989898;
 }
 @media (width <= 500px) {
